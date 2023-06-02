@@ -50,10 +50,10 @@ public class RegistrarTarefasServlet extends HttpServlet {
 			
 			vc.setAttribute("tarefa", tarefa);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefa_editar.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/editartarefa.jsp");
 			dispatcher.forward(request, response);
 		}else {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/usuario_login.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login.jsp");
 			dispatcher.forward(request, response);
 		}
 		

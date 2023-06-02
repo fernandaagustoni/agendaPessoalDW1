@@ -1,3 +1,4 @@
+<%@ page import="jakarta.servlet.http.HttpSession" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*"%>
@@ -9,7 +10,7 @@
 <title>Tasks</title>
 </head>
 <body>
-	<table style="width: 80%">
+	<table style="with: 80%">
 		<tr>
 			<th>Title</th>
 			<th>Description</th>
