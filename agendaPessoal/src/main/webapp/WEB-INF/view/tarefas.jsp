@@ -10,6 +10,7 @@
 <title>Tasks</title>
 </head>
 <body>
+	<a href = "/agendaPessoal/tarefas">Cadastrar Nova Tarefa</a>
 	<table style="with: 80%">
 		<tr>
 			<th>Title</th>

@@ -1,9 +1,5 @@
 package controller;
 
-import java.io.IOException;
-import dao.UserDao;
-import dao.TaskDao;
-import model.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -11,8 +7,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.User;
+import java.io.IOException;
+import dao.TaskDao;
+import dao.UserDao;
 
-@WebServlet("/")
+/**
+ * Servlet implementation class LoginServlet
+ */
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	UserDao udao = new UserDao();
@@ -59,13 +62,11 @@ public class LoginServlet extends HttpServlet {
 				request.setAttribute("lista_tarefas", tdao.getTarefasUsuario());
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefas.jsp");
 				dispatcher.forward(request, response);
-			} else {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login.jsp");
-				dispatcher.forward(request, response);
-			}
+			} 
 		}catch(ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		
 	}
+
 }

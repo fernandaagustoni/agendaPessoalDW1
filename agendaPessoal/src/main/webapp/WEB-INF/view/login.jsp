@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="jakarta.servlet.http.HttpSession" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +52,6 @@ input[type="text"], input[type="password"] {
 	height: 30px; 
 	border: 1px solid #ccc;
 	border-radius: 3px;
-	color: white;
 }
 
 input[type="submit"] {
@@ -77,7 +78,7 @@ form {
 </head>
 <body>
 
-<form action="<%= request.getContextPath() %>/login" method="post">
+<form action="<%=request.getContextPath()%>/login" method="post">
 <main>
 <h1>Login</h1>
 	<section>
