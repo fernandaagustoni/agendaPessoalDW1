@@ -1,17 +1,14 @@
 package controller;
 
 import java.io.IOException;
-import java.text.ParseException;
 import dao.UserDao;
-import dao.TaskDao;
 import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Task;
+import model.User;
 
 @WebServlet("/registrarTarefas")
 public class RegistrarTarefasServlet extends HttpServlet {
@@ -43,7 +40,7 @@ public class RegistrarTarefasServlet extends HttpServlet {
 		String nome = request.getParameter("nome");
 		String email = request.getParameter("email");
 		
-		Usuario u = new Usuario();
+		User u = new User();
 		
 		u.setLogin(login);
 		u.setSenha(password);
