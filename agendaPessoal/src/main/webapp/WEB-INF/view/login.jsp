@@ -140,6 +140,7 @@ body * {
 </style>
 </head>
 <body>
+<form action="<%=request.getContextPath()%>/" method="post">
     <div class="main-login">
         <div class="right-login">
             <div class="card-login">
@@ -156,5 +157,6 @@ body * {
             </div>
         </div>
     </div>
+</form>
 </body>
 </html>
