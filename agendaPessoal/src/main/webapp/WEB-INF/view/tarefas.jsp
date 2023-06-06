@@ -22,10 +22,22 @@ body * {
 .main-login{
     width: 100vw;
     height: 100vh;
-    background: #282a36;
     display: flex;
     justify-content: center;
  
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #2b134b;
+    background: #8e7cc3;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #674ea7;
 }
 
 .card-login {
@@ -86,10 +98,9 @@ table, tr, td, th {
 }
 
 td, th {
-	padding: 40px 40px;
+	padding: 15px 15px;
 	font-weight: 800;
 	color: #8e7cc3;
-	box-shadow: 0px 10px 40px -12px #b4a7d6;
 	font-size: 20px;
 }
 
@@ -119,7 +130,7 @@ td, th {
 <div class="main-login">
 <div class="right-login">
 <div>
-<form action="<%=request.getContextPath()%>/registrarTarefas" method="post">
+<form action="<%=request.getContextPath()%>/tarefas" method="post">
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.Task" %>
 
@@ -156,15 +167,16 @@ td, th {
 				${c.status}
 			</td>
 			<td>
-				<a class = "botao_tabela" href="/agendaPessoal/editarTarefa?id_tarefa=${c.id}">Edit</a>
+				<a class="btn" href="/agendaPessoal/editarTarefa?id_tarefa=${c.id}">Edit</a>
 			</td>
 			<td>
 				<input type="hidden" name="id_excluir" value="${c.id}" />
-				<input class = "botao_tabela" type="submit" value="Delete" />
+				<input class="btn" type="submit" value="Delete" />
 			</td>
 		</tr>
 	</c:forEach>
 </table>
+
 </form>
 </div>
 </div>

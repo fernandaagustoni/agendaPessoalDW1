@@ -46,7 +46,7 @@ public class TarefaServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("lista_tarefas", tdao.getTarefasUsuario());
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefas.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/registrartarefas.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login.jsp");
@@ -64,7 +64,7 @@ public class TarefaServlet extends HttpServlet {
 			
 			try {
 				tdao.excluirTarefa(id_tarefa);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/usuariodetails.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefadeletada.jsp");
 				dispatcher.forward(request, response);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block

@@ -75,7 +75,7 @@ body * {
        <div class="main-login">
         <div class="right-login">
             <div class="card-login">
-				<h1>Successfully registered user!</h1>
+				<h1>Successfully deleted task!</h1>
             </div>
         </div>
     </div>

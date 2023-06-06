@@ -21,7 +21,6 @@ body * {
 .main-login{
     width: 100vw;
     height: 100vh;
-    background: #282a36;
     display: flex;
     justify-content: center;
     align-items: center;
