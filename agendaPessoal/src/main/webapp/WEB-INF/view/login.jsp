@@ -37,15 +37,6 @@ body * {
     flex-direction: column;
 }
 
-.left-login > h1 {
-    font-size: 3vw;
-    color: #6ffc92;
-}
-
-.left-login-image{
-    width: 35vw;
-}
-
 .right-login {
     width: 50vw;
     height: 100vh;
@@ -147,11 +138,11 @@ body * {
                 <h1>LOGIN</h1>
                 <div class="textfield">
                     <label for="usuario">Username</label>
-                    <input type="text" name="usuario" placeholder="Username">
+                    <input type="text" name="login" placeholder="Username">
                 </div>
                 <div class="textfield">
                     <label for="senha">Password</label>
-                    <input type="password" name="senha" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password">
                 </div>
                 <input type="submit" class="btn-login" value="Submit" />
             </div>

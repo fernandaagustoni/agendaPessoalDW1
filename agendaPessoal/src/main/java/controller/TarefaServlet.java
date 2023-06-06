@@ -14,10 +14,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.Task;
 import model.User;
 
+
+/**
+ * Servlet implementation class UsuarioTarefa
+ */
 @WebServlet("/tarefas")
 public class TarefaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    TaskDao tdao = new TaskDao();
+	TaskDao tdao = new TaskDao();
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,7 +37,16 @@ public class TarefaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String usuario = (String) request.getSession().getAttribute("usuario");
 		if(usuario != null) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/registrartarefa.jsp");
+			ServletContext sc = getServletContext();
+			User u = (User) sc.getAttribute("usuario");
+			try {
+				tdao.buscarTarefas(u.getId());
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			request.setAttribute("lista_tarefas", tdao.getTarefasUsuario());
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefas.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login.jsp");
@@ -46,52 +60,16 @@ public class TarefaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String usuario = (String) request.getSession().getAttribute("usuario");
 		if(usuario != null) {
-			String titulo = request.getParameter("titulo");
-			String descricao = request.getParameter("descricao");
-			String data_criacao = request.getParameter("data_criacao");
-			String data_conclusao = request.getParameter("data_conclusao");
-			String status = request.getParameter("status");
-			
-			Task t = new Task();
-			t.setTitulo(titulo);
-			t.setDescricao(descricao);
-			t.setStatus(status);
-			
-			ServletContext sc = getServletContext();
-			User u = (User) sc.getAttribute("usuario");
-			t.setU(u);
-			
-			java.text.DateFormat fmt = new java.text.SimpleDateFormat("yyyy-MM-dd");
-			java.sql.Date data_criacaoSQL;
-			try {
-				data_criacaoSQL = new java.sql.Date(fmt.parse(data_criacao).getTime());
-				t.setData_criacao(data_criacaoSQL);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			java.sql.Date data_conclusaoSQL;
-			try {
-				data_conclusaoSQL = new java.sql.Date(fmt.parse(data_conclusao).getTime());
-				t.setData_conclusao(data_conclusaoSQL);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+			int id_tarefa = Integer.parseInt(request.getParameter("id_excluir"));
 			
 			try {
-				tdao.cadastrarTarefa(t);
-			}catch(ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-			
-			try {
-				tdao.buscarTarefas(u.getId());
+				tdao.excluirTarefa(id_tarefa);
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/usuariodetails.jsp");
+				dispatcher.forward(request, response);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.setAttribute("lista_tarefas", tdao.getTarefasUsuario());
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefas.jsp");
-			dispatcher.forward(request, response);
 		}else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login.jsp");
 			dispatcher.forward(request, response);
