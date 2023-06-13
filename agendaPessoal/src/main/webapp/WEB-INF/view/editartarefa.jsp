@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ page import="model.Task"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="jakarta.servlet.http.HttpSession" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -155,7 +155,7 @@ body * {
                     	<input type="text" name="status" value=<%= request.getAttribute("status") %> />
                 	</div>
 					<br>
-	<input type="submit" class="btn-login" value="Enviar" />
+					<input type="submit" class="btn-login" value="Enviar" />
 	        </div>
         </div>
     </div>

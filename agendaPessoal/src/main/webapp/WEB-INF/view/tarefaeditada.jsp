@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>New user successfully added</title>
+<title>Successfully edited task</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
 
@@ -76,7 +76,7 @@ body * {
        <div class="main-login">
         <div class="right-login">
             <div class="card-login">
-				<h1>Successfully registered user!</h1>
+				<h1>Successfully edited task!</h1>
             </div>
         </div>
     </div>

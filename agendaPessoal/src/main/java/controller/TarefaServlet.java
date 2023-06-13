@@ -46,7 +46,7 @@ public class TarefaServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("lista_tarefas", tdao.getTarefasUsuario());
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/registrartarefas.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefas.jsp");
 			dispatcher.forward(request, response);
 		} else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login.jsp");

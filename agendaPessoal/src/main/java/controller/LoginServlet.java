@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/usuario_login.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -62,7 +62,10 @@ public class LoginServlet extends HttpServlet {
 				request.setAttribute("lista_tarefas", tdao.getTarefasUsuario());
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefas.jsp");
 				dispatcher.forward(request, response);
-			} 
+			} else {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/usuarioerro.jsp");
+				dispatcher.forward(request, response);
+			}
 		}catch(ClassNotFoundException e) {
 			e.printStackTrace();
 		}

@@ -12,8 +12,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Task;
 
-@WebServlet("/editarTarefa")
-public class EditarTarefaServlet extends HttpServlet{
+/**
+ * Servlet implementation class TarefaEditarServlet
+ */
+@WebServlet("/EditarTarefa")
+public class EditarTarefaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	TaskDao tdao = new TaskDao();
     /**
@@ -97,7 +100,7 @@ public class EditarTarefaServlet extends HttpServlet{
 			
 			try {
 				tdao.alterarTarefa(t);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefas.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefaeditada.jsp");
 				dispatcher.forward(request, response);
 			}catch(ClassNotFoundException e) {
 				e.printStackTrace();
@@ -107,5 +110,5 @@ public class EditarTarefaServlet extends HttpServlet{
 			dispatcher.forward(request, response);
 		}
 	}
-	
+
 }
