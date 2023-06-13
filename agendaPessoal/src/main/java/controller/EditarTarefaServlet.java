@@ -15,7 +15,7 @@ import model.Task;
 /**
  * Servlet implementation class TarefaEditarServlet
  */
-@WebServlet("/EditarTarefa")
+@WebServlet("/editarTarefa")
 public class EditarTarefaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	TaskDao tdao = new TaskDao();
@@ -100,7 +100,7 @@ public class EditarTarefaServlet extends HttpServlet {
 			
 			try {
 				tdao.alterarTarefa(t);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefaeditada.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefas.jsp");
 				dispatcher.forward(request, response);
 			}catch(ClassNotFoundException e) {
 				e.printStackTrace();

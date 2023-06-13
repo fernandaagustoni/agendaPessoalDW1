@@ -127,10 +127,26 @@ body * {
         width: 90%;
     }
 }
+
+.header a {
+	display: block;
+    text-align: right;
+    padding: 20px 20px;
+    text-decoration: none;
+    color: #8e7cc3;
+    font-weight: 800;
+    background: #282a36;
+    box-shadow: 0px 10px 40px -12px #b4a7d6;
+    text-transform: uppercase;
+    font-size: 20px;
+}
 </style>
 </head>
 <body>
-<form action="<%=request.getContextPath()%>/" method="post">
+<div class="header">
+     <a class="menu" href = "/agendaPessoal/registerUser">Sign Up</a>     
+</div>
+<form action="<%=request.getContextPath()%>/login" method="post">
     <div class="main-login">
         <div class="right-login">
             <div class="card-login">
@@ -144,6 +160,7 @@ body * {
                     <input type="password" name="password" placeholder="Password">
                 </div>
                 <input type="submit" class="btn-login" value="Submit" />
+                <br>
             </div>
         </div>
     </div>
