@@ -60,6 +60,7 @@ public class TaskDao {
 	}
 	
 	public void buscarTarefas(int user_id) throws ClassNotFoundException {
+		tarefasUsuario.clear();
 		String SELECT_USERS_SQL = "SELECT * FROM tarefas WHERE user_id = ?";
         
         Class.forName("com.mysql.jdbc.Driver");
@@ -70,7 +71,7 @@ public class TaskDao {
         	PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USERS_SQL)){
         	preparedStatement.setInt(1, user_id);
         	System.out.println(preparedStatement);
-        	
+        	int flag = 0;
         	ResultSet rs = preparedStatement.executeQuery();
         	while(rs.next()) {
         		t = new Task();
@@ -80,7 +81,14 @@ public class TaskDao {
         		t.setData_criacao(rs.getDate("data_criacao"));
         		t.setData_conclusao(rs.getDate("data_conclusao"));
         		t.setStatus(rs.getString("status"));
-        		tarefasUsuario.add(t);
+        		for(Task tt : tarefasUsuario) {
+        			if(tt.getId() == t.getId()) {
+        				flag = 1;
+        			}
+        		}
+        		if(flag == 0) {
+        			tarefasUsuario.add(t);
+        		}
         	}
         }catch(SQLException ex) {
         	ex.printStackTrace();

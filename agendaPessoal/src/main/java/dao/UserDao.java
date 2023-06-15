@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import model.User;
 
 public class UserDao {
+	
 	String serverName="localhost";
 	String dataBasePort="3306";
 	String mydatabase="agenda";

@@ -34,7 +34,10 @@ public class LogoutServlet extends HttpServlet {
 			session.invalidate();
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login.jsp");
 			dispatcher.forward(request, response);
-		} 
+		} else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/logout.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**

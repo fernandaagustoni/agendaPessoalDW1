@@ -16,7 +16,7 @@ import model.User;
 
 
 /**
- * Servlet implementation class UsuarioTarefa
+ * Servlet implementation class TarefaServlet
  */
 @WebServlet("/tarefas")
 public class TarefaServlet extends HttpServlet {

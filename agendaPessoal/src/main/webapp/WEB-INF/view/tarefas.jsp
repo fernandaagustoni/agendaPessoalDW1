@@ -19,14 +19,6 @@ body * {
     box-sizing: border-box;
 }
 
-.main-login{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
- 
-}
-
 .btn {
     width: 100%;
     padding: 10px;
@@ -38,38 +30,6 @@ body * {
     background: #8e7cc3;
     cursor: pointer;
     box-shadow: 0px 10px 40px -12px #674ea7;
-}
-
-.card-login {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    padding: 30px 35px ;
-    background: #343746;
-    border-radius: 20px;
-    box-shadow: 0px 10px 40px #191a21;
-}
-
-.card-login > h1 {
-    color: #8e7cc3;
-    font-weight: 800;
-    margin: 0;
-}
-
-@media only screen and (max-width: 950px){
-    .card-login{
-        width: 85%;
-    }
-}
-
-@media only screen and (max-width: 600px){
-    .main-login{
-        flex-direction: column;
-    }
-
-    .card-login {
-        width: 90%;
-    }
 }
 
 .menu{
@@ -90,18 +50,36 @@ body * {
     padding: 10px 10px;
 }
 
-table, tr, td, th {
+table, tr, td{
 	border: 2px collapse #020024;
 	margin: 0 auto;
 	text-align: center;
 	border-radius: 10px;
 }
 
-td, th {
-	padding: 15px 15px;
-	font-weight: 800;
+table{
+	width: 50%;
+}
+
+td {
+	padding: 0px 50px;
+	font-weight: 600;
 	color: #8e7cc3;
 	font-size: 20px;
+}
+
+th {
+	width: 100%;
+    padding: 10px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #2b134b;
+    background: #8e7cc3;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #674ea7;
+    justify-content: center;
+    margin: 10px 0px;
 }
 
 .header li a {
@@ -219,23 +197,45 @@ nav a:nth-child(3):hover ~ #indicator {
   left: 70%;
   background: linear-gradient(130deg, purple, palevioletred);
 }
+.margin{
+	margin-top: 6%;
+}
+.card-login {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px ;
+    background: #343746;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #191a21;
+}
+.main-login{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 </style>
 </head>
 <body>
+	<div class="margin">
 	<nav>
-      <a href = "/agendaPessoal/registrarTarefas">NEW TASK</a>
+      <a href = "/agendaPessoal/registrarTarefas">NEW</a>
+      <a href = "/agendaPessoal/LogoutServlet">LOGOUT</a>
       <div id="indicator"></div>
     </nav>
+    </div>
 <div class="main-login">
-<div class="right-login">
-<div>
+<div class="card-login">
 <form action="<%=request.getContextPath()%>/tarefas" method="post">
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="model.Task" %>
 
 <table>
 	<tr>
-		<th>ID</th>
 		<th>Title</th>
 		<th>Description</th>
 		<th>Creation Date</th>
@@ -247,9 +247,6 @@ nav a:nth-child(3):hover ~ #indicator {
 	
 	<c:forEach items="${requestScope.lista_tarefas}" var="c">
 		<tr>
-			<td>
-				${c.id}
-			</td>
 			<td>
 				${c.titulo}
 			</td>
@@ -266,18 +263,17 @@ nav a:nth-child(3):hover ~ #indicator {
 				${c.status}
 			</td>
 			<td>
-				<a class="btn" href="/agendaPessoal/editarTarefa?id_tarefa=${c.id}">Edit</a>
+				<a class = "btn" href="/agendaPessoal/editarTarefa?id_tarefa=${c.id}">Edit</a>
 			</td>
 			<td>
 				<input type="hidden" name="id_excluir" value="${c.id}" />
-				<input class="btn" type="submit" value="Delete" />
+				<input class = "btn" type="submit" value="Delete" />
 			</td>
 		</tr>
 	</c:forEach>
 </table>
 
 </form>
-</div>
 </div>
 </div>
 </body>

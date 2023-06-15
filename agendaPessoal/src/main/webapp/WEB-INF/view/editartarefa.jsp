@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="UTF-8">>
 <title>Edit Task</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
@@ -234,16 +234,17 @@ nav a:nth-child(3):hover ~ #indicator {
 </style>
 </head>
 <body>
+	<div>
+		<nav>
+		  <a href = "/agendaPessoal/tarefas">TASKS</a>
+	      <a href = "/agendaPessoal/LogoutServlet">LOGOUT</a>
+	      <div id="indicator"></div>
+	    </nav>
+    </div>
 	<form action="<%=request.getContextPath()%>/editarTarefa" method="post">
-	<nav>
-	  <a href = "/agendaPessoal/tarefas">TASKS</a>
-      <a href = "/agendaPessoal/LogoutServlet">LOGOUT</a>
-      <div id="indicator"></div>
-    </nav>
 	   <div class="main-login">
         	<div class="right-login">
             	<div class="card-login">
-
 		            <div class="textfield">
                     	<label for="titulo">Title</label>
                     	<input type="text" name="titulo" value=<%= request.getAttribute("titulo") %>/>

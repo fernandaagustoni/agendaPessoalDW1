@@ -17,6 +17,7 @@ import model.Task;
 
 @WebServlet("/registrarTarefas")
 public class RegistrarTarefasServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
     TaskDao tdao = new TaskDao();
     /**

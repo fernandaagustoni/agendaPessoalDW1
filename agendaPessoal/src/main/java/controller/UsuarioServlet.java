@@ -44,7 +44,7 @@ public class UsuarioServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		
 		User u = new User();
-		log("Entreeeeeei no antes try");
+		
 		u.setLogin(login);
 		u.setSenha(password);
 		u.setNome(nome);
@@ -52,14 +52,12 @@ public class UsuarioServlet extends HttpServlet {
 		
 		try {
 			udao.cadastrarUsuario(u);
-			log("Entreeeeeei no try");
 		}catch(ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/usuariodetails.jsp");
 		dispatcher.forward(request, response);
-		log("Entreeeeeei no dps try");
 		
 	}
 }

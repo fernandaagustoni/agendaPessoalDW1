@@ -100,7 +100,7 @@ public class EditarTarefaServlet extends HttpServlet {
 			
 			try {
 				tdao.alterarTarefa(t);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefas.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefaeditada.jsp");
 				dispatcher.forward(request, response);
 			}catch(ClassNotFoundException e) {
 				e.printStackTrace();
