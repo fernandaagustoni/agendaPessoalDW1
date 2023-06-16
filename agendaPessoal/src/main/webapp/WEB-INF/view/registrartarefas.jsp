@@ -88,6 +88,20 @@ body * {
     margin-bottom: 10px;
 }
 
+.select{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #424450;
+    color: #f8f8f2;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #191a21;
+    outline: none;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
 .btn-login {
     width: 100%;
     padding: 16px 0px;
@@ -261,8 +275,12 @@ nav a:nth-child(3):hover ~ #indicator {
                     <input type="date" name="data_conclusao" placeholder="Due Date">
                 </div>
                 <div class="textfield">
-                    <label for="status">Status</label>
-                    <input type="text" name="status" placeholder="Status">
+                <label for="status">Status</label>
+                <select class="select">
+                	<option type="text" name="status">Em andamento</option>
+                	<option type="text" name="status">Pendente</option>
+                	<option type="text" name="status">Concluído</option>
+                </select>
                 </div>
                 <input type="submit" class="btn-login" value="Submit" />
             </div>
