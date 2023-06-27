@@ -201,7 +201,7 @@ nav a:nth-child(3):hover ~ #indicator {
 	margin-top: 6%;
 }
 .card-login {
-    width: 80%;
+    width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -260,7 +260,11 @@ nav a:nth-child(3):hover ~ #indicator {
 				${c.data_conclusao}
 			</td>
 			<td>
-				${c.status}
+					<c:choose>
+				   <c:when test="${c.status == 'nao_iniciada'}">To do</c:when> 
+				   <c:when test="${c.status == 'em_andamento'}">Working in Progress</c:when> 
+				   <c:when test="${c.status == 'concluida'}">Done </c:when>
+				</c:choose>
 			</td>
 			<td>
 				<a class = "btn" href="/agendaPessoal/editarTarefa?id_tarefa=${c.id}">Edit</a>

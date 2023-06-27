@@ -231,6 +231,20 @@ nav a:nth-child(3):hover ~ #indicator {
   background: linear-gradient(130deg, purple, palevioletred);
 }
 
+.select{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #424450;
+    color: #f8f8f2;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #191a21;
+    outline: none;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
 </style>
 </head>
 <body>
@@ -247,23 +261,42 @@ nav a:nth-child(3):hover ~ #indicator {
             	<div class="card-login">
 		            <div class="textfield">
                     	<label for="titulo">Title</label>
-                    	<input type="text" name="titulo" value=<%= request.getAttribute("titulo") %>/>
+                    	<input type="text" name="titulo" value=<%= request.getAttribute("titulo") %> required/>
                 	</div>
                 	<div class="textfield">
                     	<label for="titulo">Description</label>
-                    	<input type="text" name="descricao" value=<%= request.getAttribute("descricao") %> />
+                    	<input type="text" name="descricao" value=<%= request.getAttribute("descricao") %> required/>
                 	</div>
                 	<div class="textfield">
                     	<label for="titulo">Creation Date</label>
-                    	<input type="date" name="data_criacao" value=<%= request.getAttribute("data_criacao") %> />
+                    	<input type="date" name="data_criacao" value=<%= request.getAttribute("data_criacao") %> required/>
                 	</div>
                 	<div class="textfield">
                     	<label for="titulo">Due Date</label>
-                    	<input type="date" name="data_conclusao" value=<%= request.getAttribute("data_conclusao") %> />
+                    	<input type="date" name="data_conclusao" value=<%= request.getAttribute("data_conclusao") %> required/>
                 	</div>
                 	<div class="textfield">
-                    	<label for="titulo">Status</label>
-                    	<input type="text" name="status" value=<%= request.getAttribute("status") %> />
+                	<% String status = (String) request.getAttribute("status_t"); %>
+                    <label for="titulo">Status</label>
+                    <select class="select" name = "status">
+					<% if(status.equals("nao_iniciada")){ %>
+						<option value="nao_iniciada" selected>To do</option>
+					<% } else { %>
+						<option value="nao_iniciada">To do</option>
+					<% } %>
+					
+					<% if(status.equals("em_andamento")){ %>
+						<option value="em_andamento" selected>Working In Progress</option>
+					<% } else { %>
+						<option value="em_andamento">Working In Progress</option>
+					<% } %>
+					
+					<% if(status.equals("concluida")){ %>
+						<option value="concluida" selected>Done</option>
+					<% } else { %>
+						<option value="concluida">Done</option>
+					<% } %>
+				</select>
                 	</div>
 					<br>
 	<input type="submit" class="btn-login" value="Enviar" />

@@ -245,7 +245,6 @@ nav a:nth-child(3):hover ~ #indicator {
 }
 
 </style>
-</style>
 </head>
 <body>
 <form action="<%=request.getContextPath()%>/registrarTarefas" method="post">
@@ -260,27 +259,27 @@ nav a:nth-child(3):hover ~ #indicator {
                 <h1>Register New Task</h1>
                 <div class="textfield">
                     <label for="titulo">Title</label>
-                    <input type="text" name="titulo" placeholder="Title">
+                    <input type="text" name="titulo" placeholder="Title" required>
                 </div>
                 <div class="textfield">
                     <label for="descricao">Description</label>
-                    <input type="text" name="descricao" placeholder="Description">
+                    <input type="text" name="descricao" placeholder="Description" required>
                 </div>
                 <div class="textfield">
                     <label for="data_criacao">Creation Date</label>
-                    <input type="date" name="data_criacao" placeholder="Creation Date">
+                    <input type="date" name="data_criacao" placeholder="Creation Date"required>
                 </div>
                     <div class="textfield">
                     <label for="data_conclusao">Due Date</label>
-                    <input type="date" name="data_conclusao" placeholder="Due Date">
+                    <input type="date" name="data_conclusao" placeholder="Due Date" required>
                 </div>
                 <div class="textfield">
                 <label for="status">Status</label>
-                <select class="select">
-                	<option type="text" name="status">Em andamento</option>
-                	<option type="text" name="status">Pendente</option>
-                	<option type="text" name="status">Concluído</option>
-                </select>
+				<select class="select" name = "status">
+					<option value="nao_iniciada">To do</option>
+					<option value="em_andamento">Working in Progress</option>
+					<option value="concluida">Done</option>
+				</select>
                 </div>
                 <input type="submit" class="btn-login" value="Submit" />
             </div>

@@ -1,8 +1,5 @@
 package controller;
 
-import java.io.IOException;
-import java.text.ParseException;
-import dao.TaskDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -10,7 +7,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.text.ParseException;
 import model.Task;
+import dao.TaskDao;
 
 /**
  * Servlet implementation class TarefaEditarServlet
@@ -45,10 +45,11 @@ public class EditarTarefaServlet extends HttpServlet {
 			}
 			
 			request.setAttribute("titulo", tarefa.getTitulo());
+			System.out.println("Get: " + tarefa.getTitulo());
 			request.setAttribute("descricao", tarefa.getDescricao());
 			request.setAttribute("data_criacao", tarefa.getData_criacao());
 			request.setAttribute("data_conclusao", tarefa.getData_conclusao());
-			request.setAttribute("status", tarefa.getStatus());
+			request.setAttribute("status_t", tarefa.getStatus());
 			
 			vc.setAttribute("tarefa", tarefa);
 			
@@ -66,45 +67,47 @@ public class EditarTarefaServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String usuario = (String) request.getSession().getAttribute("usuario");
-		if(usuario != null) {
-			Task t = new Task();
-			
+		if(usuario != null) {			
 			String titulo = request.getParameter("titulo");
-			t.setTitulo(titulo);
 			String descricao = request.getParameter("descricao");
-			t.setDescricao(descricao);
 			String data_criacao = request.getParameter("data_criacao");
 			String data_conclusao = request.getParameter("data_conclusao");
 			String status = request.getParameter("status");
-			t.setStatus(status);
 			
-			java.text.DateFormat fmt = new java.text.SimpleDateFormat("yyyy-MM-dd");
-			java.sql.Date data_criacaoSQL;
-			try {
-				data_criacaoSQL = new java.sql.Date(fmt.parse(data_criacao).getTime());
-				t.setData_criacao(data_criacaoSQL);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			java.sql.Date data_conclusaoSQL;
-			try {
-				data_conclusaoSQL = new java.sql.Date(fmt.parse(data_conclusao).getTime());
-				t.setData_conclusao(data_conclusaoSQL);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+				Task t = new Task();
+				
+				t.setTitulo(titulo);
+				t.setDescricao(descricao);
+				t.setStatus(status);
+				
+				java.text.DateFormat fmt = new java.text.SimpleDateFormat("yyyy-MM-dd");
+				java.sql.Date data_criacaoSQL;
+				try {
+					data_criacaoSQL = new java.sql.Date(fmt.parse(data_criacao).getTime());
+					t.setData_criacao(data_criacaoSQL);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				java.sql.Date data_conclusaoSQL;
+				try {
+					data_conclusaoSQL = new java.sql.Date(fmt.parse(data_conclusao).getTime());
+					t.setData_conclusao(data_conclusaoSQL);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
+				
+				ServletContext sc = getServletContext();
+				int id_tarefa = (int) sc.getAttribute("id_tarefa");
+				t.setId(id_tarefa);
+				
+				try {
+					tdao.alterarTarefa(t);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefaeditada.jsp");
+					dispatcher.forward(request, response);
+				}catch(ClassNotFoundException e) {
+					e.printStackTrace();
+				}
 			
-			ServletContext sc = getServletContext();
-			int id_tarefa = (int) sc.getAttribute("id_tarefa");
-			t.setId(id_tarefa);
-			
-			try {
-				tdao.alterarTarefa(t);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/tarefaeditada.jsp");
-				dispatcher.forward(request, response);
-			}catch(ClassNotFoundException e) {
-				e.printStackTrace();
-			}
 		}else {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/login.jsp");
 			dispatcher.forward(request, response);
